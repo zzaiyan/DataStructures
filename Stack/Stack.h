@@ -1,16 +1,19 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#define vec std::vector<T>
 
 template <typename T> class Stack : public std::vector<T> {
 public:
-  void push(T &&e) {
-    // std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~&& push.\n";
-    std::vector<T>::emplace_back(std::forward<T>(e));
-  }
+  template <typename Re> void push(Re &&e) {
+    vec::push_back(std::forward<Re>(e));
+  } // Perfect Forward
+
   const T &pop() {
-    T temp = std::vector<T>[std::vector<T>::size() - 1];
+    T temp = vec::operator[](vec::size() - 1);
     std::vector<T>::pop_back();
     return temp;
   }
+
+  T &top() { return vec::operator[](vec::size() - 1); }
 };

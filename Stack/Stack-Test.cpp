@@ -1,45 +1,27 @@
 #include "Stack.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
-int cnt = 0;
+bool match(char a, char b) {
+  return (a == '(' && b == ')' || a == '[' && b == ']' ||
+          a == '{' && b == '}' || a == '<' && b == '>');
+}
 
-class Test {
-public:
-  int val;
-
-  ~Test() { cout << "----------------desruction, val = " << val << endl; }
-  Test() : val(0) {
-    cout << "default construct with ";
-    cout << "val = " << val << endl;
+bool pareMatch(string &str) {
+  Stack<char> s;
+  for (auto now : str) {
+    if (s.size() && match(s.top(), now))
+      s.pop();
+    else
+      s.push(now);
   }
-  Test(const int &e) : val(e) {
-    cout << "common construct with ";
-    cout << "val = " << val << endl;
-  }
-  Test(const Test &T) : val(T.val) {
-    cout << "& copy consruct with ";
-    cout << "val = " << val << endl;
-    cout << "copy time: " << ++cnt << endl;
-  }
-};
+  return s.size() == 0;
+}
 
 int main() {
-  Stack<Test> S;
-  // vector<Test> S;
-  int n;
-  cin >> n;
-  S.reserve(n);
-  cout << S.capacity() << endl;
-  for (int i = 0; i < n; i++) {
-    int t = i + 1;
-    S.push(t);
-    // cout << t << " ";
-  }
-  cout << "----------------------ending build\n";
-  // while (S.size())
-  //   S.pop();
-
-  cout << endl;
+  string str;
+  cin >> str;
+  cout << (pareMatch(str) ? "Yes\n" : "No\n");
   return 0;
 }
