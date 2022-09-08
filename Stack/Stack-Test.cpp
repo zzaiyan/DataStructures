@@ -25,10 +25,33 @@ bool pareMatch(string &str) {
   return s.empty();
 }
 
+string decToN(int base, string src) {
+  Stack<int> stk;
+  long long snum = 0;
+  string ret;
+  static char sign[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+                        '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+  while (src.size()) {
+    snum = snum * 10 + src.back() - '0';
+    src.pop_back();
+  }
+  while (snum) {
+    stk.push(snum % base);
+    snum /= base;
+  }
+  while (stk.size())
+    ret.push_back(sign[stk.pop()]);
+  return ret;
+}
+
 int main() {
-  string str;
+  /*string str;
   cin >> str;
-  cout << (pareMatch(str) ? "Yes\n" : "No\n");
+  cout << (pareMatch(str) ? "Yes\n" : "No\n");*/
+  int base;
+  string src;
+  cin >> base >> src;
+  cout << decToN(base, src) << endl;
 
   return 0;
 }
