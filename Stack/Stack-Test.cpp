@@ -27,14 +27,10 @@ bool pareMatch(string &str) {
 
 string decToN(int base, string src) {
   Stack<int> stk;
-  long long snum = 0;
   string ret;
   static char sign[] = {'0', '1', '2', '3', '4', '5', '6', '7',
                         '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-  while (src.size()) {
-    snum = snum * 10 + src.back() - '0';
-    src.pop_back();
-  }
+  auto snum = atoll(src.c_str());
   while (snum) {
     stk.push(snum % base);
     snum /= base;
