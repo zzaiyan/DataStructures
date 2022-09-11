@@ -120,12 +120,9 @@ ListNode<T> *List<T>::find(const T &e, int n, ListNode<T> *p) {
 
 template <typename T>
 ListNode<T> *List<T>::find(const T &e, ListNode<T> *p, int n) {
-  while (n-- > 0) {
+  for (int i = 0; i < n; i++)
     p = p->succ;
-    if (e == p->data)
-      return p;
-  }
-  return nullptr;
+  return find(e, n, p);
 }
 
 template <typename T>
