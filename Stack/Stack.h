@@ -9,7 +9,7 @@ public:
     vec::push_back(std::forward<Re>(e));
   } // Perfect Forward
 
-  const T &pop() {
+  T pop() {
     T temp = vec::back();
     vec::pop_back();
     return temp;

@@ -40,14 +40,25 @@ string decToN(int base, string src) {
   return ret;
 }
 
+bool isResonal(vector<int> vec) {
+  Stack<int> stk;
+  for (int i = 1, cnt = 0; i <= vec.size(); i++) {
+    stk.push(i);
+    while (stk.size() && stk.top() == vec[cnt])
+      stk.pop(), cnt++;
+  }
+  return stk.size() == 0;
+}
+
 int main() {
   /*string str;
   cin >> str;
   cout << (pareMatch(str) ? "Yes\n" : "No\n");*/
-  int base;
+  /*int base;
   string src;
   cin >> base >> src;
-  cout << decToN(base, src) << endl;
-
+  cout << decToN(base, src) << endl;*/
+  vector<int> vec{3, 2, 1, 4, 5, 6};
+  cout << isResonal(vec) ? "Yes\n" : "No\n";
   return 0;
 }

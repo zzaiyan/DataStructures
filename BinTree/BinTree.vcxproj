@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a54404ef-24bb-4da3-90c6-a739ac7524b9}</ProjectGuid>
-    <RootNamespace>List</RootNamespace>
+    <ProjectGuid>{f494fcd4-312b-4db4-9a77-f56434536f4a}</ProjectGuid>
+    <RootNamespace>BinTree</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="List.h" />
-    <ClInclude Include="ListNode.h" />
+    <ClInclude Include="binNode.h" />
+    <ClInclude Include="binTree.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="List-Test.cpp" />
+    <ClCompile Include="binTree-Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
