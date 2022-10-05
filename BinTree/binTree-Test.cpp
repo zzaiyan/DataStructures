@@ -12,6 +12,7 @@ int main() {
   auto r = tree->insertAsRC(tree->root(), 'C');
   auto d = tree->insertAsLC(l, 'D');
   // tree->insertAsLC(d, 'X');
+
   tree->insertAsRC(l, 'E');
   tree->insertAsLC(r, 'F');
   tree->insertAsRC(r, 'G');
