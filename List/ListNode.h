@@ -11,7 +11,7 @@ template <typename T> struct ListNode {
   // ~ListNode() { std::cout << "ListNode Distruction Called\n"; }
   ListNode<T> *insertAsPred(const T &e);
   ListNode<T> *insertAsSucc(const T &e);
-  static const T &remove(ListNode<T> *p);
+  static T remove(ListNode<T> *p);
   static void posSwap(ListNode<T> *p1, ListNode<T> *p2);
 };
 
@@ -27,7 +27,7 @@ template <typename T> ListNode<T> *ListNode<T>::insertAsSucc(const T &e) {
   return x;
 }
 
-template <typename T> const T &ListNode<T>::remove(ListNode<T> *p) {
+template <typename T> T ListNode<T>::remove(ListNode<T> *p) {
   p->pred->succ = p->succ;
   p->succ->pred = p->pred;
   T temp = p->data;

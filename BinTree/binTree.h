@@ -15,7 +15,7 @@ TT class BinTree {
   Node *_root;
   int _size, _height;
   // 内部接口
-  void destroy(Node *rt) { postOrder(rt, &BinTree::remove); }
+  void destroy(Node* p);
   void remove(Node *p) { delete p; }
   // void createBinTree();
 
@@ -27,9 +27,13 @@ public:
   void updateHAbove(Node *p);
   Node *root() const { return _root; }
   Node *parent(Node *p) { return p->parent; }
+  // 构造
   BinTree() : _root(new Node), _size(1), _height(0) {}
   BinTree(const Tree &t);
-  ~BinTree() { destroy(_root); }
+  //~BinTree() { 
+  //  //destroy(_root); 
+  //}
+
   // 操作接口
   Node *insertAsLC(Node *p, const T &e);
   Node *insertAsRC(Node *p, const T &e);
@@ -46,6 +50,14 @@ public:
   // 层次遍历
   void levelOrder(Node *p, void (*visit)(Node *t));
 };
+
+TT void Tree::destroy(Node* p) {
+  //if (p) {
+  //  destroy(p->lChild);
+  //  destroy(p->rChild);
+  //  delete p;
+  //}
+}
 
 TT int Tree::updateHeight(Node *p) {
   return p->height = 1 + std::max(stature(p->lChild), stature(p->rChild));

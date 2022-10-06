@@ -2,7 +2,9 @@
 #include <iostream>
 using namespace std;
 
-void pr(BinNode<char> *p) { cout << p->data << " " << p->height << endl; }
+void pr(BinNode<char>* p) {
+  cout << p->data << " " << p->height << endl;
+}
 
 int main() {
   auto tree = new BinTree<char>;
@@ -24,9 +26,9 @@ int main() {
   cout << endl;
   tree->levelOrder(tree->root(), pr);
 
-  tree->removeLC(l);
+   //tree->removeLC(l);
 
-  tree->levelOrder(tree->root(), pr);
+   //tree->levelOrder(tree->root(), pr);
 
   return 0;
 }
