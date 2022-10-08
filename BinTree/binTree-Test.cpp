@@ -20,15 +20,19 @@ int main() {
   tree->insertAsRC(r, 'G');
   cout << "size = " << tree->size() << endl;
 
-  tree->inOrder(tree->root(), pr);
-  cout << endl;
-  tree->inOrderX(tree->root(), pr);
-  cout << endl;
+  // tree->inOrder(tree->root(), pr);
+  // cout << endl;
+  // tree->inOrderX(tree->root(), pr);
+  // cout << endl;
   tree->levelOrder(tree->root(), pr);
 
-   //tree->removeLC(l);
+  tree->removeLT(tree->root());
+  tree->removeT(r->lChild);
+  cout << endl;
 
-   //tree->levelOrder(tree->root(), pr);
+  tree->levelOrder(tree->root(), pr);
+
+  cout << "Finish!\n";
 
   return 0;
 }
