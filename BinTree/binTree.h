@@ -12,6 +12,7 @@
 #define stature(p) ((p) ? (p)->height : -1)
 
 TT class BinTree {
+ protected:
   Node* _root;
   int _size, _height;
   // 内部接口

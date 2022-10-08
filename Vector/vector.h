@@ -28,12 +28,12 @@ TT class Vector {
   T& back() { return _data[_size - 1]; }
   bool reserve(int s);
   bool shrink();
-  void remove(int r);
+  T remove(int r);
   int remove(int l, int r);
   void insert(int r, const T& e);
   void clear();
   void push_back(const T& e);
-  void pop_back();
+  T pop_back();
 };
 
 TT vec::Vector(T* arr, int n) {
@@ -73,10 +73,12 @@ TT bool vec::shrink() {
   return true;
 }
 
-TT void vec::remove(int r) {
+TT T vec::remove(int r) {
+  T temp = _data[r];
   for (int i = r; i + 1 < _size; i++)
     _data[i] = _data[i + 1];
   _size--;
+  return temp;
 }
 
 TT int vec::remove(int l, int r) {
@@ -108,9 +110,10 @@ TT void vec::push_back(const T& e) {
   _data[_size++] = e;
 }
 
-TT void vec::pop_back() {
+TT T vec::pop_back() {
   if (_size > 0)
     _size--;
+  return _data[_size];
 }
 
 #undef TT
