@@ -50,6 +50,8 @@ TT class BinTree {
   void postOrderX(Node* p, void (*visit)(Node* t));
   // 层次遍历
   void levelOrder(Node* p, void (*visit)(Node* t));
+
+  int getHeight(Node* p);
 };
 
 TT void Tree::destroy(Node*& p) {
@@ -162,6 +164,36 @@ TT void Tree::levelOrder(Node* p, void (*visit)(Node* t)) {
     if (p->rChild)
       que.enqueue(p->rChild);
   }
+}
+
+TT struct stkNode {
+  BinNode<T>* ptr;  //树结点指针
+  int tag;          //退栈标记
+};
+
+TT int Tree::getHeight(Node* p) {
+  Stack<stkNode<T>> S;
+  stkNode<T> w;
+  int height = -1;
+  do {
+    while (p) {
+      S.push({p, 0});
+      p = p->lChild;
+    }
+    int flag = 1;  //继续循环标记, 用于R
+    while (flag && S.size()) {
+      height = std::max(height, S.size());
+      w = S.pop();
+      p = w.ptr;
+      if (w.tag == 0) {  //判断栈顶的tag标记
+        w.tag = 1;
+        S.push(w);
+        flag = 0;
+        p = p->rChild;
+      }
+    }
+  } while (S.size());  //继续遍历其他结点
+  return height;
 }
 
 #undef TT
