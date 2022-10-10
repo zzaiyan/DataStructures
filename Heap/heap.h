@@ -40,6 +40,7 @@ TTC hp::Heap(T* arr, int n) : Vector<T>(arr, n) {
 }
 
 TTC void hp::siftDown(int start, int m) {
+  // printf("\nstart=%d, m=%d\n", start, m);
   int i = start, j = 2 * i + 1;  // j是i的左子女位置
   T temp = _data[i];
   while (j <= m) {  // 检查是否到最后位置
@@ -48,8 +49,10 @@ TTC void hp::siftDown(int start, int m) {
     if (!_cp(temp, _data[j]))
       break;  // 小则不做调整
     else {    // 否则小者上移, i, j下降
+      // printf("%d <- %d\n", _data[i], _data[j]);
       _data[i] = _data[j];
       i = j, j = 2 * j + 1;
+      // printf("i=%d, j=%d\n", i, j);
     }
   }
   _data[i] = temp;  // 回放temp中暂存的元素
