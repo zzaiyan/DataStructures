@@ -1,5 +1,4 @@
 #pragma once
-
 #include <algorithm>
 
 #define TT template <typename T>
@@ -26,6 +25,8 @@ TT class Vector {
   T& operator[](int r);
   T& front() { return _data[0]; }
   T& back() { return _data[_size - 1]; }
+  T* begin() const { return _data; }
+  T* end() const { return _data + _size; }
   bool reserve(int s);
   bool shrink();
   T remove(int r);

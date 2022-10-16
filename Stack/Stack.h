@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+
 #define vec std::vector<T>
 
 template <typename T>

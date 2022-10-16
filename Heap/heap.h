@@ -1,20 +1,22 @@
-#pragma once
+#ifndef HEAP_H
+#define HEAP_H
 
+#include <functional>
 #include "../Vector/vector.h"
 
 #define TTC template <typename T, typename _Cp>
 #define hp Heap<T, _Cp>
 #define vec Vector<T>
 
-#define _data vec::_data
-#define _size vec::_size
-#define _capacity vec::_capacity
-
 #define MinHeap(T) Heap<T, std::greater<T>>
 #define MaxHeap(T) Heap<T, std::less<T>>
 
 template <typename T, typename _Cp = std::greater<T>>
 class Heap : public Vector<T> {
+  using vec::_capacity;
+  using vec::_data;
+  using vec::_size;
+
  protected:
   // T* _data;
   // int _size, _capacity;
@@ -40,7 +42,6 @@ TTC hp::Heap(T* arr, int n) : Vector<T>(arr, n) {
 }
 
 TTC void hp::siftDown(int start, int m) {
-  // printf("\nstart=%d, m=%d\n", start, m);
   int i = start, j = 2 * i + 1;  // j是i的左子女位置
   T temp = _data[i];
   while (j <= m) {  // 检查是否到最后位置
@@ -49,10 +50,8 @@ TTC void hp::siftDown(int start, int m) {
     if (!_cp(temp, _data[j]))
       break;  // 小则不做调整
     else {    // 否则小者上移, i, j下降
-      // printf("%d <- %d\n", _data[i], _data[j]);
       _data[i] = _data[j];
       i = j, j = 2 * j + 1;
-      // printf("i=%d, j=%d\n", i, j);
     }
   }
   _data[i] = temp;  // 回放temp中暂存的元素
@@ -88,6 +87,4 @@ TTC void hp::push(const T& x) {
 #undef hp
 #undef vec
 
-#undef _data
-#undef _size
-#undef _capacity
+#endif  // HEAP_H
